@@ -1,0 +1,17 @@
+# Datasets and training outputs (large; keep out of the repo)
+data/
+logs/
+*.log
+
+# Model weights and caches
+*.pth
+*.npz
+
+# Python
+__pycache__/
+*.pyc
+
+# Environments / IDE
+.venv/
+.vs/
+.vscode/

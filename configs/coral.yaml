@@ -1,0 +1,32 @@
+# Step 2: switch to coral data. See the top of datasets/coral.py for the directory layout
+exp_name: coral_ssg
+
+data:
+  name: coral
+  root: data/coral
+  num_points: 4096        # coral morphology has more detail, so use more points than ModelNet; lower to 2048 if GPU memory runs out
+  use_rgb: true           # use color as an extra feature (in_channels=3)
+  classes: null           # null = use folder names automatically; can also be a list to fix the order
+  val_ratio: 0.2          # with no splits/ files, automatically hold out a stratified 20% for validation
+  seed: 42
+  sampling: random        # random is fast; fps is more even but slower
+  preload_points: 20000   # after loading, downsample to this many points and keep them in memory
+  cache_in_memory: true
+  train_aug: true
+eval_split: val
+
+model:
+  dropout: 0.5
+
+train:
+  epochs: 150
+  batch_size: 8           # roughly the limit for 8GB of GPU memory at 4096 points
+  lr: 0.001
+  weight_decay: 0.0001
+  lr_step: 20
+  lr_gamma: 0.7
+  label_smoothing: 0.1
+  class_weighted_loss: true   # growth forms are usually imbalanced, so weight by class frequency
+  num_workers: 4
+  amp: true
+  seed: 42

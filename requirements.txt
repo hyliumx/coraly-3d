@@ -1,0 +1,6 @@
+# Install PyTorch separately using the command in the README (the CUDA version must match)
+numpy
+pyyaml
+tqdm
+plyfile
+laspy[lazrs]

@@ -1,0 +1,26 @@
+# Step 1: get things running on ModelNet40 to verify the code and environment
+exp_name: modelnet40_ssg
+
+data:
+  name: modelnet40
+  root: data/modelnet40_normal_resampled
+  num_points: 1024        # points sampled per sample
+  use_normals: false      # if true, use normals as extra features (in_channels=3)
+  train_aug: true
+eval_split: test          # ModelNet40 calls its evaluation split "test"
+
+model:
+  dropout: 0.4
+
+train:
+  epochs: 200             # for a quick trial, change to 5
+  batch_size: 24          # fine on an RTX 4060 8GB with 1024 points and batch 24; lower it if you run out of memory
+  lr: 0.001
+  weight_decay: 0.0001
+  lr_step: 20             # multiply the learning rate by 0.7 every 20 epochs
+  lr_gamma: 0.7
+  label_smoothing: 0.0
+  class_weighted_loss: false
+  num_workers: 4          # set to 0 if this errors on Windows
+  amp: true               # mixed precision: saves memory and is faster
+  seed: 42
