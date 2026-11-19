@@ -1,4 +1,6 @@
-# Datasets and training outputs (large; keep out of the repo)
+# Large datasets / archives
+*.zip
+mlc/dataset/
 data/
 logs/
 *.log
@@ -6,6 +8,9 @@ logs/
 # Model weights and caches
 *.pth
 *.npz
+
+# Paper PDFs (copyright; remove this line if you want to upload them)
+papers/
 
 # Python
 __pycache__/
