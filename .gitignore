@@ -9,9 +9,6 @@ logs/
 *.pth
 *.npz
 
-# Paper PDFs (copyright; remove this line if you want to upload them)
-papers/
-
 # Python
 __pycache__/
 *.pyc
